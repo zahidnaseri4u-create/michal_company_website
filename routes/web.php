@@ -9,6 +9,7 @@ Route::get('/', function () {
     });
 
 Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
 Route::get('/dashboard', function () {
     return view('admin.index');
