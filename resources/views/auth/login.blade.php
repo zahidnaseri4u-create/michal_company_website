@@ -3,7 +3,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Log In | Tapeli - Responsive Admin Dashboard Template</title>
+        <title>Log In</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc."/>
         <meta name="author" content="Zoyothemes"/>
@@ -36,7 +36,9 @@
                             </div>
 
                             <div class="pt-0">
-                                <form method="POST" action="{{ route('admin.login') }}" class="my-4">
+                                
+                                {{-- Form Started --}}
+                                <form method="POST" action="{{ route('login') }}" class="my-4">
                                     @csrf
 
                                     @if(session('error'))
@@ -45,12 +47,16 @@
                                         </div>
                                     @endif
 
+                                    
+
                                     <div class="form-group mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>
                                         <input class="form-control" type="email" name="email" id="emailaddress" required="" placeholder="Enter your email">
-                                        @error('email')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                       @if($errors->has('email'))
+                                            <small class="text-danger">
+                                                {{ $errors->first('email') }}
+                                            </small>
+                                        @endif
                                     </div>
                                     
                                     <div class="form-group mb-3">
@@ -69,6 +75,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {{-- Form Ended --}}
 
 
                                 <div class="text-center text-muted mb-4">

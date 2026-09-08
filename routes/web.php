@@ -1,27 +1,81 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-    });
 
-Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+/*
+|--------------------------------------------------------------------------
+| Public Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', function () {
+    return view('home.index');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Authentication Routes
+|--------------------------------------------------------------------------
+*/
+
+// Admin login
+Route::post('/admin/login', [AdminController::class, 'AdminLogin'])
+    ->name('admin.login');
+
+// Verification page
+Route::get('/verify', [AdminController::class, 'ShowVerification'])
+    ->name('custom.verification.form');
+
+// Verify code
+Route::post('/verify', [AdminController::class, 'VerificationVerify'])
+    ->name('custom.verification.verify');
+
+// Admin logout
+Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])
+    ->name('admin.logout');
+
+
+/*
+|--------------------------------------------------------------------------
+| Dashboard
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+/*
+|--------------------------------------------------------------------------
+| Admin Profile
+|--------------------------------------------------------------------------
+*/
+
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Show admin profile
+    Route::get('/profile', [AdminController::class, 'AdminProfile'])
+        ->name('profile.admin');
+
+    // Update profile information
+    Route::post('/profile/store', [AdminController::class, 'ProfileStore'])
+        ->name('profile.store');
+
+    // Change password
+    Route::post('/profile/password', [AdminController::class, 'ChangePassword'])
+        ->name('profile.password');
+
 });
-    
 
 
-require __DIR__.'/auth.php';
-    
+/*
+|--------------------------------------------------------------------------
+| Laravel Authentication Routes
+|--------------------------------------------------------------------------
+*/
+
+require __DIR__ . '/auth.php';
