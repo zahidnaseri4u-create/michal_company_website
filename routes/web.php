@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -69,6 +70,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/password', [AdminController::class, 'ChangePassword'])
         ->name('profile.password');
 
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get('/review', 'Index')->name('review.index');
+        Route::get('/review/create', 'create')->name('review.create');
+        Route::post('/review/store', 'store')->name('review.store');
+    });
 });
 
 

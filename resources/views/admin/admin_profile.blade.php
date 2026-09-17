@@ -6,7 +6,7 @@
     <!-- Start Content -->
     <div class="container-xxl">
 
-```
+
     <!-- Page Title -->
     <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
         <div class="flex-grow-1">

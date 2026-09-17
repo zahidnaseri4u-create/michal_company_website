@@ -10,11 +10,15 @@
     <meta name="author" content="Zoyothemes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-```
-<link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
-<link href="{{ asset('backend/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
-<link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
-```
+    <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
+    <link href="{{ asset('backend/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style">
+    <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('backend/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/libs/datatables.net-keytable-bs5/css/keyTable.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+
 
 </head>
 
@@ -151,6 +155,9 @@
 <script src="{{ asset('backend/assets/js/pages/analytics-dashboard.init.js') }}"></script>
 
 <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+
+<script src="{{ asset('backend/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('backend/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
